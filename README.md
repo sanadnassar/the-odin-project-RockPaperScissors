@@ -1,1 +1,1 @@
-# the-odin-project-RockPaperScissors
+# The-Odin-Project: Rock Paper Scissors
