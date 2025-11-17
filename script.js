@@ -13,76 +13,63 @@ function getComputerChoice() {
 }
 
 
-function getHumanChoice() {
-    let userChoice = prompt("Pick Rock, Paper or Scissors");
-    return userChoice;
+document.getElementById("btn1").addEventListener("click", ()=>{
+    const computer = getComputerChoice();
+    if (computer == "Paper") {
+        flash("#ff0000ff", "YOU LOST!");
+    } else if (computer == "Rock") {
+        flash("#575757ff", "YOU DREW!")
+    } else if (computer == "Scissors") {
+        flash ("#00ff00ff", "YOU WON!")
+    }
+}
+)
+
+document.getElementById("btn2").addEventListener("click", ()=>{
+    const computer = getComputerChoice();
+    if (computer == "Paper") {
+        flash("#575757ff", "YOU DREW!")
+    } else if (computer == "Rock") {
+        flash ("#00ff00ff", "YOU WON!")
+    } else if (computer == "Scissors") {
+        flash("#ff0000ff", "YOU LOST!");
+    }
+}
+)
+
+document.getElementById("btn3").addEventListener("click", ()=>{
+    const computer = getComputerChoice();
+    if (computer == "Paper") {
+        flash ("#00ff00ff", "YOU WON!")
+    } else if (computer == "Rock") {
+        flash("#ff0000ff", "YOU LOST!");
+    } else if (computer == "Scissors") {
+        flash("#575757ff", "YOU DREW!")
+    }
+}
+)
+
+
+// This code is AI generated it is not expected of you to know
+function flash(color, message) {
+  const body = document.body;
+  const text = document.getElementById("result");
+  const overlay = document.getElementById("flash");
+
+
+  text.textContent = message;
+  text.style.color = "#FFFFFF";
+
+
+  overlay.style.backgroundColor = color;
+  overlay.style.opacity = "1";
+
+  setTimeout(() => {
+    overlay.style.opacity = "0";
+    text.textContent = "";
+  }, 650);
 }
 
 
 
 
-
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    
-    
-    function playRound(humanChoice, computerChoice) {
-        humanChoice = humanChoice.toLowerCase();
-        computerChoice = computerChoice.toLowerCase();
-    
-        if (humanChoice == computerChoice) {
-            return;
-        } else {
-            if (humanChoice == "rock") {
-                if (computerChoice == "paper") {
-                    console.log("You Lose Paper beats Rock!");
-                    computerScore++;
-                    return;
-                } else {
-                    console.log("You Win Rock beats Scissors!");
-                    humanScore++;
-                    return;
-                }
-            } else if (humanChoice == "paper") {
-                if (computerChoice == "rock") {
-                    console.log("You Win Paper beats Rock!");
-                    humanScore++;
-                    return;
-                } else {
-                    console.log("You Lose Scissors beats Paper!");
-                    computerScore++;
-                    return;
-                }
-            } else {
-                if (computerChoice == "paper") {
-                    console.log("You Win Scissors beats Paper!");
-                    humanScore++;
-                    return;
-                } else {
-                    console.log("You Lose Rock beats Scissors!");
-                    computerScore++;
-                    return;
-                }
-            }
-        }
-    }
-
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-
-        playRound(humanSelection, computerSelection);   
-    }
-
-    if (computerScore > humanScore) {
-        console.log("Computer won! Sorry Player")
-    } else if (computerScore < humanScore) {
-        console.log("Player won! Sorry Computer")        
-    } else {
-        console.log("DRAW!")
-    }
-}
-
-
-playGame();
